@@ -1,57 +1,55 @@
-const toDoForm = document.getElementById("todo-form");
-const toDoinput = toDoForm.querySelector("#todo-form input")
-const toDoList = document.getElementById("todo-list");
+//  todo-list를 나열하기위한 form생성
+// form과 ul을 HTML에서 JS로 가져가는 코드 생성
+const todoForm = document.querySelector("#todo-form")
+const todoInput = todoForm.querySelector("input")
+const todoList = document.querySelector("#todo-list")
 
-const TODOS_KEY="todos";
+//저장된 값을 불러오고 화면에 그려줄건데 array는 호출못함 그래도 걍해봄
+const toDos = [];
 
-const toDos=[];//새로운 toDo들은 사용자가 입력하는 값들
-
-function saveToDos(){
-    //todo를string array로 변환하여 localStorage에 저장
-    localStorage.setItem("todos",JSON.stringify(toDos));
-    localStorage.setItem(TODOS_KEY,JSON.stringify(toDos));
-//단지 newTodo들만 모아서 localStorage에 저장
+function saveTodos(){
+    localStorage.setItem("todos",toDos)
 }
+//saveTodos가 하는 일은 array를 localStorage에 넣는 거 걍 그게 끝
+
+
 function deleteTodo(event){
-  const li = event.target.parentElement;
-  li.remove();
-}
-function paintTodo(newTodo){//하단의 newTodo인자 정보받아오기
- const li = document.createElement("li")
- const span = document.createElement("span")
- span.innerText = newTodo;
- const button = document.createElement("button");
- button.innerText = "x"
- button.addEventListener("click",deleteTodo)
-//이벤트 리스너로 click-> effect로 투두지우는 deleteTodo실행
-
- li.appendChild(span);
- li.appendChild(button);
- span.innerText = newTodo;
- toDoList.appendChild(li);
-//  span안에 넣은 새로운 텍스트는 사용자가 todo-form에서 우리에게 준 newTodo값
-//  이제 할 일은 새로운 li를 todoList에 추가하는 것 
-}
-function handleToDoSubmit(event){
- event.preventDefault(); 
- const newTodo = toDoinput.value;//<--input의 현재value를 새로운 변수에 복사
- //초기화하기 전에 먼저 저장
- toDoinput.value=""//그 다음 값 초기화
- toDos.push(newTodo);//new Todo들만 모아서 localStorage에 저장ㄴ
- paintTodo(newTodo);//압력값을 painttodo에 넣어서 호출
- saveToDos();
-}
-toDoForm.addEventListener("submit",handleToDoSubmit)
-
-function sayHello(){
-    console.log("this is the turn of",item)}
-
-const savedTodos = localStorage.getItem(TODOS_KEY);
-
-if(savedTodos !== null){
-    const parsedToDos = JSON.parse(savedTodos);
-    parsedToDos.forEach(paintTodo);
+    //li의 부모객체에 접근해 삭제하는 것을 돕는다.
+ const li = event.target.parentElement;
+ li.remove();
 }
 
+function paintTodo(newTodo){
+    //newTodo 내부에 들어갈 인자는 텍스트가됨
+    const li = document.createElement("li")
+    const span = document.createElement("span")
+    span.innerText = newTodo;
+    //span내부의 텍스트변경
+    const button = document.createElement("button")
+    button.innerText ="'x'"
+    button.addEventListener("click",deleteTodo)
+    //li내부에 span이 없으므로 appendChild로 
+    //li한테 자식입양시킴
+    li.appendChild(span);
+    li.appendChild(button);
+    //span내부엔 text가없으므로 newTodo입력
+    //html내부 todoList에 li삽입
+    todoList.appendChild(li);
+   
+    //기억할 점 appendchild는 순서상 항상 마지막에있어야힘
 
+}
 
+//todo 제출을 제어하는 함수생성
+function handleTodoSubmt(event){
+    event.preventDefault();
+    const newTodo = todoInput.value; //<---input의 현재 value를 새로운 변수에 복사
+    //값 초기화 전에 입력값 저장
+    todoInput.value=""
+    toDos.push(newTodo);
+    paintTodo(newTodo);
+}
+
+//preventDefault사용하여 handleTodosubmit으로 
+//페이지 새로고침할 때마다 불필요한 데이터낭비 줄임
+todoForm.addEventListener("submit",handleTodoSubmt)
