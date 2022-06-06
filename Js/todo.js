@@ -36,6 +36,7 @@ function paintTodo(newTodo){
     //li한테 자식입양시킴
     li.appendChild(span);
     li.appendChild(button);
+    li.appendChild(button);
     //span내부엔 text가없으므로 newTodo입력
     //html내부 todoList에 li삽입
     todoList.appendChild(li);
