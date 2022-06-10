@@ -17,7 +17,7 @@ const quotes =[
   author: " - Forest Gump"},
   {quote: "The world is a book, and those who do not travel read only a page",
   author: " - Saint Augustine"},
-  {quote: "Faith is to believe what you do not see; the reward of this faith is to see what you believe.",
+  {quote: "Faith is to believe what you do not see. The reward of this faith is to see what you believe.",
   author: " - Saint Augustine"},
   {quote:"Since love grows within you, so beauty grows.",
    author:" - Saint Augustine"}
@@ -28,7 +28,10 @@ const quote = document.querySelector("#quote span:first-child")
 const author = document.querySelector("#quote span:last-child")
 //명언먼저 작가는 그 아래로 오게 출력
 
+//정헤진 숫자에 내림처리를 하는 floorrhk Math.random()*quote의 전체길이ㅡ 전체array의 length를 곱해서사용하는 length를 씀
 const todayquotes = quotes[Math.floor(Math.random()*quotes.length)];//마지막명언출력
 
 quote.innerText = todayquotes.quote;
 author.innerText = todayquotes.author;
+
+//quote내용- 작가-순서대로 나옴
