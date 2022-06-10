@@ -20,22 +20,25 @@ function saveTodos(){
 
 function deleteTodo(event){
  const li = event.target.parentElement;//li의 부모객체에 접근해 삭제하는 것을 돕는다.
+ console.log(li.id);
  li.remove();
+ toDos = toDos.filter((todo)=>todo.id !== parseInt(li.id));
+ saveTodos();
 }
 
 function paintTodo(newTodo){
     //newTodo 내부에 들어갈 인자는 텍스트가됨
     const li = document.createElement("li")
+    li.id = newTodo.id
     const span = document.createElement("span")
-    span.innerText = newTodo;
+    span.innerText = newTodo.text;
     //span내부의 텍스트변경
     const button = document.createElement("button")
-    button.innerText ="'x'"
+    button.innerText ="x"
     button.addEventListener("click",deleteTodo)
     //li내부에 span이 없으므로 appendChild로 
     //li한테 자식입양시킴
     li.appendChild(span);
-    li.appendChild(button);
     li.appendChild(button);
     //span내부엔 text가없으므로 newTodo입력
     //html내부 todoList에 li삽입
@@ -50,8 +53,13 @@ function handleTodoSubmt(event){
     const newTodo = todoInput.value; //<---input의 현재 value를 새로운 변수에 복사
                                     //값 초기화 전에 입력값 저장
     todoInput.value=""//form을 submit하면 input을 비우고 
-    toDos.push(newTodo);//newTodo를 todos array에 푸쉬한 다음
-    paintTodo(newTodo);//화면에 푸쉬된 새로운 todo를 그려줌
+    const newTodoObj ={
+        text : newTodo,
+        id : Date.now(),
+    }
+   
+    toDos.push(newTodoObj);//newTodo를 todos array에 푸쉬한 다음
+    paintTodo(newTodoObj);//화면에 푸쉬된 새로운 todo를 그려줌
     saveTodos();
 }
 
@@ -70,6 +78,5 @@ if(savedTodos !== null){
     const parsedTodos= JSON.parse(savedTodos)
     toDos = parsedTodos;
     parsedTodos.forEach(paintTodo);
-
-
 }
+

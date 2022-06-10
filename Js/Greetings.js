@@ -1,6 +1,10 @@
 const LoginForm = document.querySelector("#login-form")
 const LoginInput = document.querySelector("#login-form input")
 const Greeting = document.querySelector("#greeting")
+// const Greet = document.querySelector("#hello")
+
+
+// Greet.innerText = "hey"
 
 const HIDDEN_CLASSNAME ="hidden";
 const USERNAME_KEY = "username";
@@ -18,7 +22,7 @@ function OnSubmit(event){
 LoginForm.addEventListener("submit",OnSubmit)
 
 function paintGreetings(username) {
- Greeting.innerText = `Good morning ${username}, It is good to see you again today's temperature is 22 degree`
+ Greeting.innerText = `Good morning ${username}, It is good to see you again `
  //먼저 사용자이름을 innerText에 입력함
  Greeting.classList.remove(HIDDEN_CLASSNAME);
 //user값이 입력되면 hidden_classname을 제거함

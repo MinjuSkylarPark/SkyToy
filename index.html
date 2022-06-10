@@ -4,39 +4,56 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Momentum</title>
     <link rel="stylesheet" href="/style.css" />
   </head>
   <!-- body id->RancomColor를 주면 background.js colorEffect 살행 -->
   <body>
-    <div id="hello">
-      <h1>hello</h1>
+    <!-- bgimg넣으려고 쓴 div 최하단의 배경화면과 이어진다 -->
+
+    <div id="weather" style="color: pink; justify-content: center">
+      <span></span>
+      <span></span>
     </div>
-    <h2 id="clock">00:00</h2>
+    <div class="box">
+      <h2 id="clock">00:00</h2>
+    </div>
+
     <form class="hidden" id="login-form">
       <input type="text" placeholder="what is your name" />
       <input type="submit" value="login" />
     </form>
-    <h1 class="hidden" id="greeting"></h1>
+    <div class="box">
+      <h1 class="hidden" id="greeting"></h1>
+    </div>
+
     <!-- user가 입력할 수 있는 tood-list생성  -->
-    <form id="todo-form">
-      <input type="text" placeholder="Write a Todo and Press Enter" required />
-    </form>
-    <ul id="todo-list">
-      <li>Hey</li>
-    </ul>
+    <div class="box">
+      <h1>What is your main focus for today?</h1>
+    </div>
+    <div class="box">
+      <form id="todo-form">
+        <input
+          type="text"
+          placeholder="Write a Todo and Press Enter"
+          required
+        />
+      </form>
+    </div>
+    <div class="box">
+      <ul id="todo-list"></ul>
+    </div>
+
     <div id="quote">
       <span></span>
       <span></span>
     </div>
-    <div id="weather">
-      <span></span>
-      <span></span>
-    </div>
+
     <!-- <button>click me</button> -->
+    <!-- <script src="/Js/background.js"></script> -->
+
     <script src="/Js/Greetings.js"></script>
     <script src="/Js/Clock.js"></script>
-    <script src="/Js/background.js"></script>
     <script src="/Js/quotes.js"></script>
     <script src="/Js/todo.js"></script>
     <script src="/Js/weather.js"></script>
