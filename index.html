@@ -5,10 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Momentum</title>
+    <style type="text/css">
+      /* CSS 첫 이미지 고정 */
+
+      #container {
+        height: 1200px;
+        background-size: cover;
+        background-image: url("/Img/0.jpeg");
+      }
+    </style>
     <link rel="stylesheet" href="/style.css" />
   </head>
   <!-- body id->RancomColor를 주면 background.js colorEffect 살행 -->
-  <body>
+  <body id="bgImg">
     <!-- bgimg넣으려고 쓴 div 최하단의 배경화면과 이어진다 -->
 
     <div id="weather">
@@ -18,11 +27,12 @@
     <div class="box">
       <h2 id="clock">00:00</h2>
     </div>
+    <div class="box">
+      <form class="hidden" id="login-form">
+        <input type="text" placeholder="what is your name" class="input" />
+      </form>
+    </div>
 
-    <form class="hidden" id="login-form">
-      <input type="text" placeholder="what is your name" />
-      <input type="submit" value="login" />
-    </form>
     <div class="box">
       <h1 class="hidden" id="greeting"></h1>
     </div>
@@ -37,6 +47,7 @@
           type="text"
           placeholder="Write a Todo and Press Enter"
           required
+          class="input"
         />
       </form>
     </div>
@@ -49,10 +60,9 @@
         <span></span>
       </div>
     </div>
-
-    <!-- <button>click me</button> -->
-    <!-- <script src="/Js/background.js"></script> -->
-
+    <!-- 
+    <script src="/Js/background.js"></script> -->
+    <script src="/Js/background2.js"></script>
     <script src="/Js/Greetings.js"></script>
     <script src="/Js/Clock.js"></script>
     <script src="/Js/quotes.js"></script>

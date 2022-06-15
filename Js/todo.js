@@ -14,7 +14,8 @@ let toDos = [];
 function saveTodos(){
     localStorage.setItem(TODOS_KEY,JSON.stringify(toDos))
 }
-//userid로 todos를 주고 toDos를 array형태로 콘솔에 출력
+
+//userid로 todos를 주고 toDos를 array형태로 콘솔에 출력->json.string형태로 출력
 //saveTodos가 하는 일은 array를 localStorage에 넣는 거 걍 그게 끝
 
 
